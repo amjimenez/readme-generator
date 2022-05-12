@@ -32,3 +32,6 @@ run "node index.js" from the console/command line
 Please contact aliciajimenez@rocketcentral.com for questions.
 
 [https://github.com/amjimenez](https://github.com/amjimenez)
+
+![readmegif](https://user-images.githubusercontent.com/99158580/168167058-be871ed2-b857-4a53-8393-021cfb30fdd6.gif)
+
