@@ -33,5 +33,5 @@ Please contact aliciajimenez@rocketcentral.com for questions.
 
 [https://github.com/amjimenez](https://github.com/amjimenez)
 
-![readmegif](https://user-images.githubusercontent.com/99158580/168167058-be871ed2-b857-4a53-8393-021cfb30fdd6.gif)
+https://user-images.githubusercontent.com/99158580/168171212-9fc0b1f0-b51e-448f-9e4c-dc18a9d1c3f9.mp4
 
