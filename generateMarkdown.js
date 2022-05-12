@@ -1,33 +1,20 @@
-// // TODO: Create a function that returns a license badge based on which license is passed in
-// // If there is no license, return an empty string
-// function renderLicenseBadge(license) {}
-
-// // TODO: Create a function that returns the license link
-// // If there is no license, return an empty string
-// function renderLicenseLink(license) {}
-
-// // TODO: Create a function that returns the license section of README
-// // If there is no license, return an empty string
-// function renderLicenseSection(license) {}
-
 const md = {
     generateMarkdown: function(data) {
         let content = '';
+        content += this.renderLicenseBadge(data) + "\n\n";
         content += this.renderProjectTitle(data) + "\n\n";
         content += this.renderDescription(data) + "\n\n";
         content += this.renderTableOfContents(data) + "\n\n";
         content += this.renderInstallation(data) + "\n\n";
         content += this.renderUsage(data) + "\n\n";
-        content += this.renderCredits(data) + "\n\n";
         content += this.renderLicense(data) + "\n\n";
-        content += this.renderBadges(data) + "\n\n";
-        content += this.renderFeatures(data) + "\n\n";
         content += this.renderContribute(data) + "\n\n";
-        content += this.renderTests(data);
-      
-        return content;
+        content += this.renderTests(data) + "\n\n";
+        content += this.renderQuestions(data);
+
+      return content;
       },
-      
+
       renderProjectTitle: function(data) {
         return `# ${data.title}`;
       },
@@ -63,34 +50,49 @@ const md = {
       renderUsage: function(data) {
         return `## Usage` + "\n" + `${data.usage}`;
       },
-
-      renderCredits: function(data) {
-        let returnStr = '';
-        let credits = data.credits.split(',');
-
-        for (let i=0; i<credits.length; i++) {
-            let author = credits[i].trim();
-            returnStr += `- ${author}`;
-
-            if (i != credits.length - 1) {
-                returnStr += "\n";
-            }
-        }
-
-        return `## Credits` + "\n" + `${data.credits}`;
-      },
       
       renderLicense: function(data) {
-        return `## License` + "\n" + `${data.license}`;
+        let returnStr = `## License`;
+
+        if (!data.license) {
+          return returnStr;
+        }
+
+        if (data.license == 'MIT License') {
+          return returnStr + "\n" + '[MIT License](https://choosealicense.com/licenses/mit/)';
+        }
+
+        if (data.license == 'Apache License 2.0') {
+          return returnStr + "\n" + '[Apache License 2.0](https://choosealicense.com/licenses/apache-2.0/)';
+        }
+
+        if (data.license == 'Mozilla Public License 2.0') {
+          return returnStr + "\n" + '[Mozilla Public License 2.0](https://choosealicense.com/licenses/mpl-2.0/)';
+        }
+
+        return returnStr;
       },
-      
-      renderBadges: function(data) {
-        return `## Badges` + "\n" + `${data.badges}`;
+
+      renderLicenseBadge: function(data) {
+          if (!data.license) {
+            return '';
+          }
+
+          if (data.license == 'MIT License') {
+            return '![MIT License](https://img.shields.io/badge/MIT%20License-Badge-red)';
+          }
+
+          if (data.license == 'Apache License 2.0') {
+            return '![Apache License 2.0](https://img.shields.io/badge/Apache%20License%202.0-Badge-red)';
+          }
+
+          if (data.license == 'Mozilla Public License 2.0') {
+            return '![Mozilla Public License 2.0](https://img.shields.io/badge/Mozilla%20Public%20License%202.0-Badge-red)';
+          }
+
+          return '';
       },
-      
-      renderFeatures: function(data) {
-        return `## Features` + "\n" + `${data.credits}`;
-      },
+
 
       renderContribute: function(data) {
         return `## Contributing` + "\n" + `${data.contribute}`;
@@ -98,12 +100,12 @@ const md = {
       
       renderTests: function(data) {
         return `## Tests` + "\n" + `${data.tests}`;
+
       },
 
       renderQuestions: function(data) {
-          return `## Questions` + "\n" +
-            `[GitHub Profile - ${data.username}]('https://github.com/${data.username}')` + "\n" +
-            `Please contact ${data.email} for questions.`
+          return `## Questions` + "\n" + `Please contact ${data.email} for questions.` + "\n\n" +
+            `[https://github.com/${data.username}](https://github.com/${data.username})`;
       }
 };
 
